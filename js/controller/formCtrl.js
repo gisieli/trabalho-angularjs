@@ -58,8 +58,13 @@ myApp.controller('FormCtrl', function($scope){
 	}
 
 	$scope.removePessoa = function ( remove ){
-		 $scope.list.splice(remove, 1);
+		$scope.list.splice(remove, 1);
 
+		$scope.nome = undefined;
+		$scope.email = undefined;
+		$scope.telefone = undefined;
+
+		$scope.clicouEditar = false;
 	}
 
 	$scope.cancelarEdicao = function ( cancelar ){
