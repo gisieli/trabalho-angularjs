@@ -1,47 +1,50 @@
 myApp.controller('FormCtrl', function($scope){
 
-	$scope.indexTarefa = 0;
+	$scope.indexPessoa = 0;
 	$scope.clicouEditar = false;
 
 	$scope.list = [
 	{
-		name: "Pessoa 1",
-		email: "pessoa1@ciss.com.br",
-		phonenumber: 4635368500
+		nomePessoa: "Pessoa 1",
+		emailPessoa: 'pessoa1@ciss.com.br',
+		telefonePessoa: 4677777777
 	},
 	{
-		name: "Pessoa 2",
-		email: "pessoa1@ciss.com.br",
-		phonenumber: 4635368500
+		nomePessoa: "Pessoa 2",
+		emailPessoa: 'pessoa2@ciss.com.br',
+		telefonePessoa: 4655555555
 	},
 	{
-		name: "Pessoa 3",
-		email: "pessoa1@ciss.com.br",
-		phonenumber: 4635368500
+		nomePessoa: "Pessoa 3",
+		emailPessoa: 'pessoa3@ciss.com.br',
+		telefonePessoa: 4612345678
 	}
 
 	];
 
 	$scope.cadastraPessoa = function( nome, email, telefone ) {
-		if (!!data) {
+		if (!!nome) {
 			$scope.list.push({
 				nomePessoa: nome,
 				emailPessoa: email,
 				telefonePessoa: telefone
 			});
 
-			$scope.pessoa = undefined;
+			$scope.nome = undefined;
+			$scope.email = undefined;
+			$scope.telefone = undefined;
 		}
 	};
 
-	$scope.editaPessoa = function ( nome, email, telefone ){
+	$scope.editaPessoa = function ( dataIndex ){
 		$scope.clicouEditar = true;
 		$scope.indexPessoa = dataIndex;
-		$scope.renomear = $scope.list[nome, email, telefone].nomePessoa;
-		//Posso editar qualquer uma das info
+		$scope.renomearNome = $scope.list[dataIndex].nomePessoa;
+		$scope.renomearEmail = $scope.list[dataIndex].emailPessoa;
+		$scope.renomearTelefone = $scope.list[dataIndex].telefonePessoa;
 	};
 
-	$scope.renomearCadastro = function ( novoNome, novoEmail, novoTelefone ){
+	$scope.renomearPessoa = function ( novoNome, novoEmail, novoTelefone ){
 		var editObj= {};
 		editObj = {
 			'nomePessoa' : novoNome,
@@ -62,4 +65,5 @@ myApp.controller('FormCtrl', function($scope){
 	$scope.cancelarEdicao = function ( cancelar ){
 		$scope.clicouEditar = false;
 	}
+
 });

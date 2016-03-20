@@ -1,69 +1,102 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
 <head>
-	<title>Atividadde AngulasJS</title>
+	<title>Atividade AngulasJS</title>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/myApp.js"></script>
+	<script type="text/javascript" src="js/controller/formCtrl.js"></script>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-<body>
+<body ng-controller="FormCtrl">
 	<div class ="container">
-		<div class="jumbotron">
-			<h1>Cadastrar</h1>
+		<nav >
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+			</div>
+		</nav>
+	</nav>
+	<div class="jumbotron row">
+		<div class="row col-xs-6" ng-hide='clicouEditar'>
+			<form>
+				<legend>Cadastrar Pessoa</legend>
 
-
-			<div class="row">
 				<div class="form-group">
 					<label for="name">Nome</label>
-					<input type="text" class="form-control" id="name" placeholder="Digite seu nome" ng-model="pessoa.name"></input>
+					<input type="text" class="form-control" id="name" placeholder="Digite seu nome" ng-model="nome"></input>
 				</div>
 				<div class="form-group">
 					<label for="email">E-mail</label>
-					<input type="number" class="form-control" id="email" placeholder="Digite seu e-mail" ng-model="pessoa.email"></inputs>
+					<input type="email" class="form-control" id="email" placeholder="Digite seu e-mail" ng-model="email"></inputs>
 				</div>
-					<div class="form-group">
+				<div class="form-group">
 					<label for="phonenumber">Telefone</label>
-					<input type="number" class="form-control" id="phonenumber" placeholder="Digite seu telegone" ng-model="pessoa.phonenumber"></input>
+					<input type="number" class="form-control" id="phonenumber" placeholder="Digite seu telefone" ng-model="telefone"></input>
 				</div>
 				<div>
-						<button type="submit" class="btn btn-primary pull-right" ng-click="cadastraTarefa(tarefa)">Cadastrar</button>	
-					</div>
-				<table class="table">
-			<thead>
-				<tr>
-					<th>Nome</th>	
-					<th>E-mail</th>
-					<th>Telefone</th>
-					<th>Opções</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td>
-						<button class="btn btn-success" ng-click="editaTarefa($index)">
-							<i class="glyphicon glyphicon-pencil"></i>
-						</button>
-
-						<button class="btn btn-danger" ng-click="removeTarefa($index)">
-							<i class="glyphicon glyphicon-trash"></i>
-						</button>
-					</td>
-				</tr>
-			</tbody>
-		</table>
+					<button type="submit" class="btn btn-primary pull-right" ng-click="cadastraPessoa(nome, email, telefone)">Cadastrar</button>
+				</div>
+			</form>
+		</div>
 		
-
+		<div class="row col-xs-6" ng-show='clicouEditar'>
+			<legend>Editar Pessoa</legend>
+			<div>
+				<div class="form-group">
+					<label for="name">Nome</label>
+					<input type="text" class="form-control" ng-model="renomearNome"></input>
+					<div class="form-group">
+						<label for="name">E-mail</label></div>
+						<input type="email" class="form-control" ng-model="renomearEmail"></input>
+					</div>
+					<div class="form-group">
+						<label for="name">Telefone</label>
+						<input type="number" class="form-control" ng-model="renomearTelefone"></input>
+					</div>
+				</div>
+				<div>
+					<button class="btn btn-primary pull-right" ng-click="renomearPessoa(renomearNome, renomearEmail, renomearTelefone)">Renomear</button>	
+				</div>
+				<div>
+					<button class="btn btn-primary pull rigth" ng-click="cancelarEdicao(cancelar)">Cancelar</button>
+				</div>
 			</div>
 
+			<div class="col-xs-6">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Nome</th>	
+							<th>E-mail</th>
+							<th>Telefone</th>
+							<th>Opções</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="item in list">
+							<td ng-bind="item.nomePessoa"></td>
+							<td ng-bind="item.emailPessoa"></td>
+							<td ng-bind="item.telefonePessoa"></td>
+							<td>
+								<button class="btn btn-success" ng-click="editaPessoa($index)">
+									<i class="glyphicon glyphicon-pencil"></i>
+								</button>
 
+								<button class="btn btn-danger" ng-click="removePessoa($index)">
+									<i class="glyphicon glyphicon-trash"></i>
+								</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
-
-	</div> 
-
-</div>
-</body>
-</html>
+	</body>
+	</html>
