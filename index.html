@@ -7,6 +7,7 @@
 	<script type="text/javascript" src="js/controller/formCtrl.js"></script>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body ng-controller="FormCtrl">
 	<div class ="container">
@@ -26,7 +27,7 @@
 	<div class="jumbotron row">
 		<div class="row col-xs-6" ng-hide='clicouEditar'>
 			<form>
-				<legend>Cadastrar Pessoa</legend>
+				<legend>Cadastrar</legend>
 				<div class="form-group">
 					<label for="name">Nome</label>
 					<input type="text" class="form-control" id="name" placeholder="Digite seu nome" ng-model="nome"></input>
@@ -44,9 +45,9 @@
 				</div>
 			</form>
 		</div>
-		
+
 		<div class="row col-xs-6" ng-show='clicouEditar'>
-			<legend>Editar Pessoa</legend>
+			<legend>Editar</legend>
 			<div>
 				<div>
 					<div class="form-group">
@@ -63,11 +64,12 @@
 					</div>
 				</div>
 				<div>
-					<button class="btn btn-primary pull-right" ng-click="renomearPessoa(renomearNome, renomearEmail, renomearTelefone)">Salvar</button>	
-				</div>
+					<button class="btn btn-primary pull-right" ng-click="cancelarEdicao(cancelar)">Cancelar</button>
+				</div>	
 				<div>
-					<button class="btn btn-primary pull-rigth" ng-click="cancelarEdicao(cancelar)">Cancelar</button>
+					<button class="btn btn-primary  pull-right" ng-click="renomearPessoa(renomearNome, renomearEmail, renomearTelefone)">Salvar</button>	
 				</div>
+
 			</div>
 		</div>
 
